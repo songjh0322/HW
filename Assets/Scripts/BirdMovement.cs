@@ -1,23 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class BirdMovement : MonoBehaviour
 {
-    public float speed = 2f; // 이동 속도
-    private Vector3 randomDirection; // 랜덤 방향
+    private GameObject player;
+    public float speed = 5f; // 이동 속도
+    private Rigidbody rigidbody;
 
+
+    private void Awake()
+    {
+        rigidbody = GetComponent<Rigidbody>();
+    }
     // Start is called before the first frame update
     void Start()
     {
-        // 랜덤한 방향을 설정 (XY 평면에서만 이동하도록 Y는 0으로 고정)
-        randomDirection = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
+        if (player == null)
+        {
+            player = GameObject.FindWithTag("Player"); // 태그로 플레이어 오브젝트를 찾음
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        // 랜덤한 방향으로 계속 이동
-        transform.position += randomDirection * speed * Time.deltaTime;
+        if (player != null)
+        {
+            Vector3 direction = (player.transform.position - transform.position).normalized; // 방향 벡터 계산
+            rigidbody.AddForce(direction * speed, ForceMode.VelocityChange); // 방향으로 힘을 가함
+        }
     }
 }
