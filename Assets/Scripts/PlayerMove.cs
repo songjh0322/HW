@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -9,8 +10,13 @@ public class PlayerMove : MonoBehaviour
     public float teleportDistance = 10f; // 순간이동할 거리
     public float jumpHeight = 5f; // Space바로 올라갈 높이
     public int deathCount = 10;
+    public Text leftLife;
 
     // Update is called once per frame
+    private void Start()
+    {
+        leftLife.text = "남은 목숨: 10";
+    }
     void Update()
     {
         // 이동
@@ -45,12 +51,12 @@ public class PlayerMove : MonoBehaviour
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            deathCount--;  // count 증가
-            Debug.Log("피격! 남은 목숨 " + deathCount);
+            deathCount--;  // count 감소
+            leftLife.text = "남은 목숨: " + deathCount;
 
             // 적 오브젝트 파괴
             Destroy(other.gameObject);
-            
+
 
         }
     }
