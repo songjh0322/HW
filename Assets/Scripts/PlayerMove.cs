@@ -13,10 +13,12 @@ public class PlayerMove : MonoBehaviour
 
     private Animator animator;
     private bool isJumping = false;
-
+    public AudioClip hitSound; // 피격음 파일
+    private AudioSource audioSource;
     private void Start()
     {
         animator = GetComponent<Animator>(); // Animator 컴포넌트 가져오기
+        audioSource = gameObject.AddComponent<AudioSource>(); // AudioSource 추가
         leftLife.text = "남은 목숨: " + deathCount;
     }
 
@@ -86,6 +88,11 @@ public class PlayerMove : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
+            // 피격음 재생
+            if (hitSound != null)
+            {
+                audioSource.PlayOneShot(hitSound);
+            }
             deathCount--;
             leftLife.text = "남은 목숨: " + deathCount;
             Destroy(other.gameObject);
