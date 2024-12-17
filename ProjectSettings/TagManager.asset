@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Groung
   - Ground
+  - CutScene
   layers:
   - Default
   - TransparentFX

@@ -6,10 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/LoseScene.unity
-    guid: bc0c0dfe5bb02034d98a28f41df20962
+    path: Assets/Scenes/MainScene.unity
+    guid: e4bbb8edaca61d546b8e4f1587635496
   - enabled: 1
     path: Assets/Scenes/Ilgamho Lake.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/WinScene.unity
+    guid: c0fb8b7c789d588448a0592bf0b4593d
+  - enabled: 1
+    path: Assets/Scenes/LoseScene.unity
+    guid: bc0c0dfe5bb02034d98a28f41df20962
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

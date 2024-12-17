@@ -6,7 +6,7 @@ public class WaveSpawner : MonoBehaviour
 {
     public GameObject prefab;
     public GameObject player; // 플레이어 오브젝트
-    public float startTime = 1;
+    public float startTime = 12;
     public float endTime = 5;
     public float spawnRate = 0.5f;
     public float spawnRadius = 5f; // 플레이어 주변에서 생성될 거리 반경
